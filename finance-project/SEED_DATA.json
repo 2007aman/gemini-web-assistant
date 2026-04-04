@@ -1,0 +1,50 @@
+[
+  {
+    "model": "core.transaction",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "amount": "5000.00",
+      "transaction_type": "INCOME",
+      "category": "Salary",
+      "date": "2026-04-01",
+      "description": "Monthly paycheck"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "amount": "1200.00",
+      "transaction_type": "EXPENSE",
+      "category": "Rent",
+      "date": "2026-04-02",
+      "description": "April Apartment Rent"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "amount": "150.50",
+      "transaction_type": "EXPENSE",
+      "category": "Groceries",
+      "date": "2026-04-03",
+      "description": "Weekly food supply"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "amount": "200.00",
+      "transaction_type": "INCOME",
+      "category": "Freelance",
+      "date": "2026-04-03",
+      "description": "Logo design project"
+    }
+  }
+]
