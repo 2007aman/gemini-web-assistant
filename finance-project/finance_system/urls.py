@@ -14,4 +14,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/analytics/', AnalyticsView.as_view()),
+    # transactions/urls.py mein
+path('transactions/api/analytics/', AnalyticsView.as_view(), name='analytics'),
 ]
