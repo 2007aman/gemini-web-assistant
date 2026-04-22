@@ -1,4 +1,4 @@
-markdown_content = """# Sentiment Analysis Web Application
+
 
 ## Overview
 This is a web-based tool built using the Django framework that performs natural language processing on user-provided text. The application calculates the sentiment polarity (how positive or negative the text is) and the subjectivity (how much opinion vs. fact is present) using the TextBlob library.
