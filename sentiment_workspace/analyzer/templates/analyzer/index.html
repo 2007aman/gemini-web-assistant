@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Sentiment Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans selection:bg-indigo-200 selection:text-indigo-900">
+    <main class="max-w-4xl mx-auto pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+                Sentiment Analysis Tool
+            </h1>
+            <p class="mt-4 text-lg text-slate-600">
+                Enter your text below to analyze its emotional tone, polarity, and subjectivity.
+            </p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-6 sm:p-10">
+                <form method="POST" action="{% url 'index' %}">
+                    {% csrf_token %}
+                    <label for="user_text" class="block text-sm font-medium text-slate-700 mb-2">Text to Analyze</label>
+                    <textarea 
+                        id="user_text" name="user_text" rows="5" 
+                        class="block w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-base p-4 border bg-slate-50" 
+                        placeholder="Type or paste your text here..." required>{% if user_text %}{{ user_text }}{% endif %}</textarea>
+                    
+                    {% if error %}
+                        <p class="mt-2 text-sm text-red-600">{{ error }}</p>
+                    {% endif %}
+                    <div class="mt-6 flex justify-end">
+                        <button type="submit" class="inline-flex items-center rounded-lg border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 transition-colors">
+                            Analyze Text
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            {% if analyzed %}
+            <div class="border-t border-slate-200 bg-slate-50 p-6 sm:p-10">
+                <h3 class="text-lg font-semibold text-slate-900 mb-6">Analysis Results</h3>
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                    <div class="rounded-xl border p-5 flex flex-col items-center justify-center text-center {{ color_theme }}">
+                        <span class="text-sm font-medium uppercase tracking-wider mb-1 opacity-80">Overall Tone</span>
+                        <span class="text-2xl font-bold">{{ sentiment_class }}</span>
+                    </div>
+                    <div class="rounded-xl border border-slate-200 bg-white p-5 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">Polarity Score</span>
+                        <span class="text-2xl font-bold text-slate-800">{{ polarity }}</span>
+                        <span class="text-xs text-slate-400 mt-2">-1 (Negative) to 1 (Positive)</span>
+                    </div>
+                    <div class="rounded-xl border border-slate-200 bg-white p-5 flex flex-col items-center justify-center text-center shadow-sm">
+                        <span class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-1">Subjectivity Score</span>
+                        <span class="text-2xl font-bold text-slate-800">{{ subjectivity }}</span>
+                        <span class="text-xs text-slate-400 mt-2">0 (Objective) to 1 (Subjective)</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
