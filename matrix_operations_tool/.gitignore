@@ -1,0 +1,27 @@
+# Python virtual environment
+venv/
+ENV/
+env/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Environment variables (if you add them later)
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Flask/Instance folder
+instance/
+
+# Local logs
+*.log
